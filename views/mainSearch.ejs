@@ -1,0 +1,48 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, intial-scaled=1.0">
+        <title>Movie Search</title>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+
+    <body>
+        <nav>
+            <div class="site-title">
+                <a href="/"><h1>Search</h1></a>
+            </div>
+        </nav>
+
+        <form action="/" method="GET">
+            <label for="search">Search: </label>
+            <input type="text" id="search" name="search" required>
+            <button>Submit</button>
+        </form>
+
+        <div class="blogs content">
+
+            <% if (blogs.length > 0) { %>
+                <% blogs.forEach(blog => { %>
+
+                    <h3 class="title"><%= blog.title %></h3>
+                    <p class="snippet"><%= blog.snippet %></p>
+
+                <% }) %>
+            <% } else { %>
+                <p>There are no blogs to display...</p>
+            <% } %>
+
+            <% if (movies.length > 0) { %>
+                <% movies.forEach(movie => { %>
+
+                    <h3 class="title"><%= movies.Title %></h3>
+
+                <% }) %>
+            <% } else { %>
+                <p>There are no movies to display...</p>
+            <% } %>
+
+        </div>
+
+    </body>
+</html>
