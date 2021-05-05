@@ -7,42 +7,52 @@
     </head>
 
     <body>
-        <nav>
-            <div class="site-title">
-                <a href="/"><h1>Search</h1></a>
+        <script src="/functions.js"></script>
+
+        <div class="searchMenu">
+            <div class="searchBar">
+                <label for="search">SEARCH: </label>
+                <input type="text" id="search" name="search" required>
+                <button onclick="searchMovies()">Submit</button>
             </div>
-        </nav>
 
-        <form action="/" method="GET">
-            <label for="search">Search: </label>
-            <input type="text" id="search" name="search" required>
-            <button>Submit</button>
-        </form>
+            <div class="searchOptions">
+                <div class="searchYear">
+                    <label>YEAR</label>
+                    <div>
+                        <input type="range" min="1970" max="2021" class="slider" id="yearRange">
+                    </div>
+                </div>
+                <div class="searchType" id="searchType">
+                    <label>TYPE</label>
+                    <div>
+                        <input type="radio" id="Any" name="type" value="any" checked>
+                        <label for="Any">Any</label>
 
-        <div class="blogs content">
+                        <input type="radio" id="Movies" name="type" value="movies">
+                        <label for="Movies">Movies</label>
 
-            <% if (blogs.length > 0) { %>
-                <% blogs.forEach(blog => { %>
+                        <input type="radio" id="Series" name="type" value="series">
+                        <label for="Series">Series</label>
 
-                    <h3 class="title"><%= blog.title %></h3>
-                    <p class="snippet"><%= blog.snippet %></p>
-
-                <% }) %>
-            <% } else { %>
-                <p>There are no blogs to display...</p>
-            <% } %>
-
-            <% if (movies.length > 0) { %>
-                <% movies.forEach(movie => { %>
-
-                    <h3 class="title"><%= movies.Title %></h3>
-
-                <% }) %>
-            <% } else { %>
-                <p>There are no movies to display...</p>
-            <% } %>
-
+                        <input type="radio" id="Episodes" name="type" value="episodes">
+                        <label for="Episodes">Episodes</label>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="movieResults">
+            <div class="movieList content" id="movieList">
+                <h1 style="margin-left: 25%;">Search Above!</h1>
+            </div>
+            <div class="movieDisplay content" id="movieDisplay">
+                <div class="displayMain">
+                </div>
+            </div>
+        </div>
+
+        
 
     </body>
 </html>

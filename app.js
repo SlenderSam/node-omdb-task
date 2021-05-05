@@ -6,10 +6,8 @@ const fetch = require('node-fetch');
 const app = express();
 
 async function searchApi(){
-    const response = await fetch('http://www.omdbapi.com/?apikey=12b69f05&s=star+wars')
-    
-    var data = await response.json();
-    console.log(data);
+    const response = await fetch('http://www.omdbapi.com/?apikey=12b69f05&s=star+wars');
+    const data = await response.json();
     return data;
 }
 
@@ -33,11 +31,14 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true}))
 
 app.get('/', (req, res) => {
-    const blogs = [
-        {title: 'help', snippet: 'Lorem ipsum dotor sit amet consectetur'},
-        {title: 'me', snippet: 'Lorem ipsum dotor sit amet consectetur'},
-        {title: 'please', snippet: 'Lorem ipsum dotor sit amet consectetur'},
-    ]
-    const movies = searchApi();
-    res.render('mainSearch', {blogs, movies});
+    searchApi().then(result => {
+        let movies = result["Search"];
+        res.render('mainSearch', {movies});
+    });
+
+    // const movies = searchApi()
+    // movies.then(function(movies){
+    //     console.log(movies);
+    //     res.render('mainSearch', {movies: movies});
+    // });
 });

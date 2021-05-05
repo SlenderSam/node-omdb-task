@@ -1,7 +1,171 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
 body{
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 0 20px;
+  /* max-width: 1200px; */
+  margin: 0;
   font-family: 'Noto Serif', serif;
+  height: 100%;
 }
+
+
+
+.movieResults{
+    padding: 0;
+    display: block;
+}
+
+.movieList{
+    padding: 0 20px;
+    width: 30%;
+    float: left;
+    border-right: rgb(100, 100, 100);
+    border-right-style: solid;
+    border-right-width: 1px;
+    overflow-y: auto;
+    height: 85%;
+}
+
+.movie{
+    border-bottom: rgb(100, 100, 100);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    transition: 1s;
+    float: left;
+    width: 100%;
+}
+
+.movie:hover{
+    background-color: rgb(200, 200, 200);
+}
+
+.title{
+    cursor: default;
+}
+
+
+/* -------------------- SEARCH SECTION -------------------- */
+
+.searchMenu{
+    padding: 0 20px;
+    height: 10%;
+    width: 100%;
+    display: table;
+    background-color: rgb(100, 100, 100);
+    color: white;
+}
+
+.searchMenu > div{
+    padding-top: 40px;
+}
+.searchBar{
+    float: left;
+    width: 50%;
+}
+
+.searchOptions{
+    width: 45%;
+    float: left;
+    margin-right: auto;
+}
+
+.searchYear{
+    float: left;
+    width: 50%;
+}
+
+.searchType{
+    width: 50%;
+    float: left;
+}
+
+.searchIndicator{
+    margin-left: 25%;
+    margin-right: 25%;
+    animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+    0%{
+        color: rgb(0, 0, 0);
+    }
+    40%{
+        color: rgb(200, 200, 200);
+    }
+    100%{
+        color: rgb(0, 0, 0);
+    }
+}
+
+/* -------------------- DISPLAY SECTION -------------------- */
+
+.movieDisplay{
+    width: 65%;
+    float: left;
+    padding-top: 1%;
+    padding-left: 1%;
+    margin-right: 0%;
+}
+
+.displayImage{
+    height: 300px;
+    width: 250px;
+    float: left;
+    border-radius: 20px;
+    padding-right: 1%;
+}
+
+.displayMain{
+    padding-left: 1%;
+    /* float: left; */
+}
+
+.displayHead{
+    border-bottom: rgb(100, 100, 100);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    height: 35%;
+}
+
+.displayBody{
+    border-bottom: rgb(100, 100, 100);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+.displayFoot{
+    padding-top: 1%;
+}
+
+.displayFoot > div{
+    float: left;
+    width: 33%;
+    text-align: center;
+}
+
+.displayFoot > div > p, label{
+    margin-right: auto;
+}
+
+.displayTitle{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.displayDetails, .displayActors{
+    font-size: 24px;
+}
+
+.listImage{
+    height: 60px;
+    width: 60px;
+    float: left;
+    border-radius: 10px;
+    padding: 1%;
+}
+
+.displayIMDB, .displayRT{
+    border-right: rgb(100, 100, 100);
+    border-right-style: solid;
+    border-width: 1px;
+}
+
+/* -------------------- DISPLAY SECTION -------------------- */
