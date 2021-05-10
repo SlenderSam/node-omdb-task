@@ -4,5 +4,4 @@
  
  TO DO:
  - Multi-handle year range slider (required)
- - Code and comment refinement/polish-up (important)
  - Persistent watchlist (desirable) 
