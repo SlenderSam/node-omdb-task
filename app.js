@@ -5,6 +5,7 @@ const fetch = require('node-fetch');
 // express app
 const app = express();
 
+// Hardcoded search function originally used for a default display
 async function searchApi(){
     const response = await fetch('http://www.omdbapi.com/?apikey=12b69f05&s=star+wars');
     const data = await response.json();
@@ -35,10 +36,4 @@ app.get('/', (req, res) => {
         let movies = result["Search"];
         res.render('mainSearch', {movies});
     });
-
-    // const movies = searchApi()
-    // movies.then(function(movies){
-    //     console.log(movies);
-    //     res.render('mainSearch', {movies: movies});
-    // });
 });
