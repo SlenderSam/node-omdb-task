@@ -266,7 +266,7 @@ async function displayMovieResult(result){
             <img src="${result["Poster"]} alt="" class="displayImage">
             <div class="displayMain">
                 <p class="displayTitle">${result["Title"]}</p>
-                <p class="displayDetails">${result["Rated"]} - ${result["Year"]} - ${result["Genre"]} - ${result["Runtime"]}</p>
+                <p class="displayDetails">${result["Rated"]} | ${result["Year"]} | ${result["Genre"]} | ${result["Runtime"]}</p>
                 <p class="displayActors">${result["Actors"]}</p>
             </div>
         </div>

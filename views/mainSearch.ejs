@@ -11,9 +11,9 @@
 
         <div class="searchMenu">
             <div class="searchBar">
-                <label for="search">SEARCH: </label>
+                <label for="search" class="searchLabel">SEARCH: </label>
                 <input type="text" id="search" name="search" required>
-                <button onclick="searchMovies()">Submit</button>
+                <button class="searchButton" onclick="searchMovies()">Submit</button>
             </div>
 
             <div class="searchOptions">
@@ -46,11 +46,13 @@
         </div>
 
         <div class="movieResults">
-            <div class="movieList content" id="movieList">
+            <div class="movieList" id="movieList">
                 <h1 style="margin-left: 25%;">Search Above!</h1>
             </div>
-            <div class="movieDisplay content" id="movieDisplay">
+            <div class="movieDisplay" id="movieDisplay">
                 <div class="displayMain">
+                    <h1 style="font-size: 40px;">OMDB Search Application by Samuel Blokland</h1>
+                    <h2 style="font-size: 30px;">&#8592; Select a Movie to Display it Here</h2>
                 </div>
             </div>
         </div>

@@ -58,18 +58,18 @@ body{
 }
 .searchBar{
     float: left;
-    width: 50%;
+    width: 40%;
 }
 
 .searchOptions{
-    width: 45%;
+    width: 55%;
     float: left;
     margin-right: auto;
 }
 
 .searchYear{
     float: left;
-    width: 50%;
+    width: 25%;
 }
 
 .searchType{
@@ -80,7 +80,31 @@ body{
 .searchIndicator{
     margin-left: 25%;
     margin-right: 25%;
-    animation: pulse 2.5s infinite;
+    animation: pulse 1.5s infinite;
+}
+
+.searchLabel{
+    font-weight: bold;
+}
+
+.searchButton{
+    border-radius: 10%;
+    border: none;
+}
+
+.searchButton:hover{
+    background-color: rgb(183, 212, 255);
+}
+
+#search{
+    background: none;
+    border: none;
+    border-bottom:solid;
+    border-bottom-width: 1px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
 }
 
 @keyframes pulse {
@@ -166,10 +190,47 @@ body{
     border-right: rgb(100, 100, 100);
     border-right-style: solid;
     border-width: 1px;
+    font-size: 18px;
+}
+
+.displayDescription{
+    font-size: 18px;
 }
 
 /* -------------------- YEAR RANGE SECTION -------------------- */
 
-.minYearLabel, .maxYearLabel{
+/* .minYearLabel, .maxYearLabel{
     float: left;
+} */
+
+/* -------------------- CUSTOM SLIDER SECTION -------------------- */
+  
+/* The slider itself */
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: auto; /* Full-width */
+    height: 5px; /* Specified height */
+    background: #ffffff; /* Grey background */
+    outline: none; /* Remove outline */
+    border-radius: 10px;
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 15px; /* Set a specific slider handle width */
+    height: 15px; /* Slider handle height */
+    background: rgb(200, 200, 200); /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 10px;
+}
+
+.slider::-moz-range-thumb {
+    width: 15px; /* Set a specific slider handle width */
+    height: 15px; /* Slider handle height */
+    background: rgb(200, 200, 200); /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 10px;
 }
