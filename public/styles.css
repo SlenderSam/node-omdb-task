@@ -168,4 +168,8 @@ body{
     border-width: 1px;
 }
 
-/* -------------------- DISPLAY SECTION -------------------- */
+/* -------------------- YEAR RANGE SECTION -------------------- */
+
+.minYearLabel, .maxYearLabel{
+    float: left;
+}

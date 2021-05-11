@@ -18,11 +18,22 @@ async function searchMovies(){
         }
     });
 
+    let minYear = document.getElementById("yearRange1").value;
+    let maxYear = document.getElementById("yearRange2").value;
+    if (minYear > maxYear) {
+        replaceYear = minYear;
+        minYear = maxYear;
+        maxYear = replaceYear;
+    }
+
+
     // Retrieves the search key terms, processes them into an API request 
     // with the dbURI constant kept in app.js, which is then sent to the OMDB API
     let search = document.getElementById("search").value;
     let searchURI = encodeURIComponent(search);
     let response = await fetch(dbURI + `s=${searchURI}`);
+
+
 
     // Awaits the response from API request and converts the response into JSON format,
     // then distributes desired search and result data to allocated variables.
@@ -61,7 +72,7 @@ async function searchMovies(){
     switch (type) {
         case "any":
             result.forEach(movie => {
-                if(movie.Type != 'game'){
+                if(movie.Type != 'game' && maxYear >= parseInt(movie.Year) && parseInt(movie.Year) >= minYear){
                     filteredTotal++;
                 }
             });
@@ -69,7 +80,7 @@ async function searchMovies(){
 
         case "movies":
             result.forEach(movie => {
-                if(movie.Type == 'movie'){
+                if(movie.Type == 'movie' && maxYear >= parseInt(movie.Year) && parseInt(movie.Year) >= minYear){
                     filteredTotal++;
                 }
             });
@@ -77,7 +88,7 @@ async function searchMovies(){
 
         case "series":
             result.forEach(movie => {
-                if(movie.Type == 'series'){
+                if(movie.Type == 'series' && maxYear >= parseInt(movie.Year) && parseInt(movie.Year) >= minYear){
                     filteredTotal++;
                 }
             });
@@ -85,7 +96,7 @@ async function searchMovies(){
         
         case "episodes":
             result.forEach(movie => {
-                if(movie.Type == 'episode'){
+                if(movie.Type == 'episode' && maxYear >= parseInt(movie.Year) && parseInt(movie.Year) >= minYear){
                     filteredTotal++;
                 }
             });
@@ -93,7 +104,7 @@ async function searchMovies(){
     
         default:
             result.forEach(movie => {
-                if(movie.Type != 'game'){
+                if(movie.Type != 'game' && maxYear >= parseInt(movie.Year) && parseInt(movie.Year) >= minYear){
                     filteredTotal++;
                 }
             });
@@ -121,10 +132,10 @@ async function searchMovies(){
         switch (type) {
             case "any":
                 result.forEach(movie => {
-                    if(movie.Type != 'game'){
+                    if(movie.Type != 'game' && maxYear >= parseInt(movie.Year) && parseInt(movie.Year) >= minYear){
                         document.getElementById("movieList").innerHTML +=
                         `<div class="movie" onclick="displayMovie(event)">
-                            <img src="${movie["Poster"]} alt="" class="listImage">
+                            <img src="${movie["Poster"]} alt="Image Unavailable" class="listImage">
                             <h3 class="title">${movie.Title}</h3>
                         </div>`;
                     }
@@ -133,10 +144,10 @@ async function searchMovies(){
     
             case "movies":
                 result.forEach(movie => {
-                    if(movie.Type == 'movie'){
+                    if(movie.Type == 'movie' && maxYear >= parseInt(movie.Year) && parseInt(movie.Year) >= minYear){
                         document.getElementById("movieList").innerHTML +=
                         `<div class="movie" onclick="displayMovie(event)">
-                            <img src="${movie["Poster"]} alt="" class="listImage">
+                            <img src="${movie["Poster"]} alt="Image Unavailable" class="listImage">
                             <h3 class="title">${movie.Title}</h3>
                         </div>`;
                     }
@@ -145,10 +156,10 @@ async function searchMovies(){
     
             case "series":
                 result.forEach(movie => {
-                    if(movie.Type == 'series'){
+                    if(movie.Type == 'series' && maxYear >= parseInt(movie.Year) && parseInt(movie.Year) >= minYear){
                         document.getElementById("movieList").innerHTML +=
                         `<div class="movie" onclick="displayMovie(event)">
-                            <img src="${movie["Poster"]} alt="" class="listImage">
+                            <img src="${movie["Poster"]} alt="Image Unavailable" class="listImage">
                             <h3 class="title">${movie.Title}</h3>
                         </div>`;
                     }
@@ -157,10 +168,10 @@ async function searchMovies(){
             
             case "episodes":
                 result.forEach(movie => {
-                    if(movie.Type == 'episode'){
+                    if(movie.Type == 'episode' && maxYear >= parseInt(movie.Year) && parseInt(movie.Year) >= minYear){
                         document.getElementById("movieList").innerHTML +=
                         `<div class="movie" onclick="displayMovie(event)">
-                            <img src="${movie["Poster"]} alt="" class="listImage">
+                            <img src="${movie["Poster"]} alt="Image Unavailable" class="listImage">
                             <h3 class="title">${movie.Title}</h3>
                         </div>`;
                     }
@@ -169,10 +180,10 @@ async function searchMovies(){
         
             default:
                 result.forEach(movie => {
-                    if(movie.Type != 'game'){
+                    if(movie.Type != 'game' && maxYear >= parseInt(movie.Year) && parseInt(movie.Year) >= minYear){
                         document.getElementById("movieList").innerHTML +=
                         `<div class="movie" onclick="displayMovie(event)">
-                            <img src="${movie["Poster"]} alt="" class="listImage">
+                            <img src="${movie["Poster"]} alt="Image Unavailable" class="listImage">
                             <h3 class="title">${movie.Title}</h3>
                         </div>`;
                     }
@@ -276,3 +287,16 @@ async function displayMovieResult(result){
             </div>
         </div>`;
 };
+
+// This function is called when a movie is selected from the movie list on the left
+// side of the webpage. The chosen movie is processed as an API request and finer details
+// are pushed to the main display section of the webpage.
+function maxYearSlide(event){
+    let target = event.target || event.srcElement;
+    document.getElementById("maxRangeLabel").innerHTML = `${target.value}`;
+}
+
+function minYearSlide(event){
+    let target = event.target || event.srcElement;
+    document.getElementById("minRangeLabel").innerHTML = `${target.value}`;
+}

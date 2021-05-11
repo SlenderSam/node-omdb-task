@@ -20,7 +20,10 @@
                 <div class="searchYear">
                     <label>YEAR</label>
                     <div>
-                        <input type="range" min="1970" max="2021" class="slider" id="yearRange">
+                        <label class="minYearLabel" for="yearRange1" id="minRangeLabel">1970</label>
+                        <input type="range" min="1970" max="2021" class="slider" id="yearRange1" value="1970" oninput="minYearSlide(event)" onchange="minYearSlide(event)"><br>
+                        <label class="maxYearLabel" for="yearRange2" id="maxRangeLabel">2021</label>
+                        <input type="range" min="1970" max="2021" class="slider" id="yearRange2" value="2021" oninput="maxYearSlide(event)" onchange="maxYearSlide(event)">
                     </div>
                 </div>
                 <div class="searchType" id="searchType">
