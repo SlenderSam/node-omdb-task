@@ -18,6 +18,7 @@ async function searchMovies(){
         }
     });
 
+    // Checks and rearranges the order of yearRange1 and yearRange2 values for accurate min and max values
     let minYear = document.getElementById("yearRange1").value;
     let maxYear = document.getElementById("yearRange2").value;
     if (minYear > maxYear) {
@@ -33,7 +34,11 @@ async function searchMovies(){
     let searchURI = encodeURIComponent(search);
     let response = await fetch(dbURI + `s=${searchURI}`);
 
-
+    // Prevents empty or whitespace searches from being processed
+    if (!search || !search.trim()) {
+        document.getElementById("movieList").innerHTML = `<div class=""><h1>Invalid Search</h1></div>`;
+        return;
+    }
 
     // Awaits the response from API request and converts the response into JSON format,
     // then distributes desired search and result data to allocated variables.
@@ -288,14 +293,11 @@ async function displayMovieResult(result){
         </div>`;
 };
 
-// This function is called when a movie is selected from the movie list on the left
-// side of the webpage. The chosen movie is processed as an API request and finer details
-// are pushed to the main display section of the webpage.
+// Updates the slider labels to represent the min and max slider values
 function maxYearSlide(event){
     let target = event.target || event.srcElement;
     document.getElementById("maxRangeLabel").innerHTML = `${target.value}`;
 }
-
 function minYearSlide(event){
     let target = event.target || event.srcElement;
     document.getElementById("minRangeLabel").innerHTML = `${target.value}`;
